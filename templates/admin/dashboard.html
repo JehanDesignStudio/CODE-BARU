@@ -1,0 +1,76 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="mb-4 fw-bold text-dark">
+    <i class="bi bi-speedometer2 me-2"></i>Dashboard Admin
+  </h1>
+
+  <div class="row g-4">
+    <!-- Total Buku -->
+    <div class="col-md-3">
+      <div class="card theme-card shadow-sm hover-shadow">
+        <div class="card-body d-flex align-items-center py-3">
+          <div class="icon-circle bg-primary text-white me-3">
+            <i class="bi bi-book-fill fs-3"></i>
+          </div>
+          <div>
+            <p class="mb-1 text-muted fw-semibold">Total Buku</p>
+            <h4 class="fw-bold text-dark">{{ total_buku }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Pengunjung -->
+    <div class="col-md-3">
+      <div class="card theme-card shadow-sm hover-shadow">
+        <div class="card-body d-flex align-items-center py-3">
+          <div class="icon-circle bg-success text-white me-3">
+            <i class="bi bi-people-fill fs-3"></i>
+          </div>
+          <div>
+            <p class="mb-1 text-muted fw-semibold">Total Pengunjung</p>
+            <h4 class="fw-bold text-dark">{{ total_pengunjung }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Pinjaman -->
+    <div class="col-md-3">
+      <div class="card theme-card shadow-sm hover-shadow">
+        <div class="card-body d-flex align-items-center py-3">
+          <div class="icon-circle bg-warning text-dark me-3">
+            <i class="bi bi-journal-check fs-3"></i>
+          </div>
+          <div>
+            <p class="mb-1 text-muted fw-semibold">Total Pinjaman</p>
+            <h4 class="fw-bold text-dark">{{ total_pinjaman }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="card mt-5 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title fw-bold text-dark mb-3">Statistik Umum</h5>
+      <canvas id="myChart"
+              height="100"
+              data-buku="{{ total_buku|int }}"
+              data-pengunjung="{{ total_pengunjung|int }}"
+              data-pinjaman="{{ total_pinjaman|int }}">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Include Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Include External JS -->
+<script src="{{ url_for('static', filename='js/chart-data.js') }}"></script>
+
+{% endblock %}

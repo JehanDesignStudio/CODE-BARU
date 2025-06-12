@@ -1,0 +1,64 @@
+{% extends 'pengunjung/layout.html' %}
+{% block content %}
+
+<!-- Gaya mandiri -->
+<style>
+  .contact-card {
+    border: 1px solid #dee2e6;
+    border-radius: 1rem;
+  }
+  .contact-header {
+    background-color: #0dcaf0;
+    color: #fff;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .contact-list .list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+  }
+  .contact-list i {
+    font-size: 1.2rem;
+  }
+  .contact-list a {
+    text-decoration: none;
+    color: #0d6efd;
+  }
+  .contact-list a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container mt-5 mb-5">
+  <div class="card contact-card shadow">
+    <div class="card-header contact-header py-3">
+      <h3 class="mb-0"><i class="bi bi-telephone-fill me-2"></i>Kontak Kami</h3>
+    </div>
+    <div class="card-body p-4">
+      <p class="fs-5 mb-4">Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan hubungi kami melalui:</p>
+      <ul class="list-group contact-list fs-6">
+        <li class="list-group-item">
+          <i class="bi bi-envelope-fill text-primary me-2"></i>
+          Email:
+          <a href="mailto:jehandesainstudio@gmail.com">jehandesainstudio@gmail.com</a>
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-telephone-fill text-success me-2"></i>
+          Telepon:
+          <a href="https://wa.me/6285169199196" target="_blank">0851 6919 9196</a>
+        </li>
+        <li class="list-group-item">
+          <i class="bi bi-geo-alt-fill text-danger me-2"></i>
+          Alamat: Jl. Empat Lima, Balai Gadang, Kec. Koto Tangah, Kota Padang, Sumatera Barat 25586
+        </li>
+      </ul>
+      <div class="mt-4">
+        <a href="{{ url_for('pengunjung_informasi') }}" class="btn btn-outline-dark rounded-3">
+          ← Kembali
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

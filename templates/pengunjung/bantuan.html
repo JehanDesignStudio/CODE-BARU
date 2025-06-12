@@ -1,0 +1,67 @@
+{% extends 'pengunjung/layout.html' %}
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="container py-5">
+    <div class="card custom-card shadow">
+        <div class="card-header custom-header d-flex align-items-center">
+            <i class="bi bi-question-circle-fill fs-3 me-2"></i>
+            <h3 class="mb-0">Bantuan Penggunaan Sistem</h3>
+        </div>
+        <div class="card-body custom-body px-5 py-4">
+            <p class="fs-5 mb-4">Selamat datang di halaman <strong>Bantuan</strong>. Berikut adalah panduan menggunakan sistem perpustakaan digital <strong>created JDS (jehan Desain Studio)</strong>:</p>
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-wrapper me-3 text-primary-custom">
+                            <i class="bi bi-search fs-2"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Pencarian Buku</h5>
+                            <p class="mb-0 text-muted">Gunakan fitur pencarian untuk menemukan buku yang Anda butuhkan dengan cepat dan efisien.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-wrapper me-3 text-success-custom">
+                            <i class="bi bi-book fs-2"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Peminjaman Buku</h5>
+                            <p class="mb-0 text-muted">Pilih buku yang tersedia dan lakukan peminjaman langsung dari akun Anda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-wrapper me-3 text-warning-custom">
+                            <i class="bi bi-clock-history fs-2"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Riwayat Peminjaman</h5>
+                            <p class="mb-0 text-muted">Lihat daftar buku yang telah Anda pinjam beserta status pengembaliannya.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-wrapper me-3 text-danger-custom">
+                            <i class="bi bi-headset fs-2"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Bantuan Admin</h5>
+                            <p class="mb-0 text-muted">Hubungi admin melalui halaman kontak jika mengalami kendala saat menggunakan sistem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="{{ url_for('pengunjung_informasi') }}" class="btn btn-outline-dark rounded-3">
+                        ← Kembali
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+{% endblock %}

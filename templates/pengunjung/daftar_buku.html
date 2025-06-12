@@ -1,0 +1,83 @@
+{% extends 'pengunjung/layout.html' %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">
+      <i class="bi bi-journal-bookmark-fill me-1"></i> Daftar Buku
+    </h5>
+    <a href="{{ url_for('pengunjung_dashboard') }}" class="btn btn-light btn-sm">
+      <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+    </a>
+  </div>
+
+  <div class="card-body">
+    <!-- FORM PENCARIAN -->
+    <form method="get" action="{{ request.path }}" class="d-flex mb-4">
+      <div class="input-group">
+        <input
+          type="text"
+          name="q"
+          class="form-control"
+          placeholder="Cari judul, penulis, atau penerbit..."
+          value="{{ request.args.get('q', '') }}"
+        />
+        <button class="btn btn-primary" type="submit">
+          <i class="bi bi-search"></i> Cari
+        </button>
+      </div>
+    </form>
+    <!-- END FORM PENCARIAN -->
+
+    {% if buku %}
+      <div class="table-responsive rounded shadow-sm theme-table">
+        <table class="table table-bordered table-hover align-middle mb-0">
+          <thead class="table-dark text-center text-light">
+            <tr>
+              <th>Judul</th>
+              <th>Penulis</th>
+              <th>Penerbit</th>
+              <th>Tahun</th>
+              <th>Stok</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for b in buku %}
+            <tr>
+              <td>{{ b.judul }}</td>
+              <td>{{ b.penulis }}</td>
+              <td>{{ b.penerbit }}</td>
+              <td>{{ b.tahun_terbit }}</td>
+              <td class="text-center">
+                {% if b.stok > 0 %}
+                  <span class="badge bg-success">{{ b.stok }}</span>
+                {% else %}
+                  <span class="badge bg-danger">Habis</span>
+                {% endif %}
+              </td>
+              <td class="text-center">
+                {% if b.stok > 0 %}
+                  <a
+                    href="{{ url_for('pinjam_buku', buku_id=b.id, q=request.args.get('q','')) }}"
+                    class="btn btn-outline-primary btn-sm"
+                  >
+                    <i class="bi bi-bookmark-check"></i> Pinjam
+                  </a>
+                {% else %}
+                  <span class="text-muted"><i class="bi bi-x-circle"></i> Tidak Tersedia</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i class="bi bi-exclamation-circle me-2"></i> 
+        Belum ada buku yang tersedia atau tidak ditemukan hasil pencarian.
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
